@@ -1,0 +1,30 @@
+
+body {
+    margin-left: 5%;
+    margin-right: 5%;
+
+    background-color: rgb(18, 18, 49);
+}
+
+.day {
+    margin-top: 3%;
+
+    padding-left: 5%;
+    padding-right: 5%;
+
+    display: grid;
+
+    grid-template-columns: 11% 11% 11% 11% 11% 11% 11% 11% 11%;
+    justify-content: space-between;
+
+    border: 2px black solid;
+    border-radius: 80px;
+
+    background-color: rgb(236, 222, 198);
+}
+
+.weather {
+    display: flex;
+
+    flex-direction: column;
+}

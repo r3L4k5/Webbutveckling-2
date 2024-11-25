@@ -1,0 +1,27 @@
+
+doctype html
+html(lang="en")
+
+    head
+
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+        link(rel="stylesheet", href="style.css")
+
+        title Weather
+
+    body 
+
+        for day, date in days
+
+            div(class="day")
+                
+                h2= date
+
+                for hour in day
+
+                    div(class="weather")
+                        h2= hour.time
+                        h2= hour.temp
+
