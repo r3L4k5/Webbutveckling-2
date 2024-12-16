@@ -1,30 +1,154 @@
 
-body {
-    margin-left: 5%;
-    margin-right: 5%;
-
-    background-color: rgb(18, 18, 49);
+@font-face {
+    font-family: Lemonmilk;
+    src: url(LEMONMILK-Bold.otf);
 }
 
-.day {
-    margin-top: 3%;
 
-    padding-left: 5%;
-    padding-right: 5%;
+body {
+    margin-left: 2%;
+    margin-right: 2%;
+
+    background-image: url("background/Clear_background.jpg");
+    background-size: 2500px 2000px;
+
+    transition: background-image 1s;
+}
+
+header {
+    display: flex;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    font-family: Lemonmilk;
+    font-size: 200%;
+}
+
+
+main {
+    padding-top: 2%;
+
+    /*margin-top: 20%;*/
+    margin-left: 1%;
+    margin-right: 1%;
+
+    display: flex; 
+
+    flex-direction: column;
+    justify-content: center;
+    
+    opacity: 90%;
+} 
+
+
+.day {
+  
+    padding-left: 4%;
+    padding-right: 4%;
+
+    margin-top: 2%;
+    
+    background-color: white;
 
     display: grid;
 
     grid-template-columns: 11% 11% 11% 11% 11% 11% 11% 11% 11%;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    align-items: space-evenly;
 
-    border: 2px black solid;
-    border-radius: 80px;
+    opacity: 100%;
 
-    background-color: rgb(236, 222, 198);
+    border: solid, lightgray;
+    border-radius: 120px;
+
+    transition: padding 0.35s;
 }
 
-.weather {
+.day:hover {
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.left-side {
     display: flex;
 
     flex-direction: column;
+    
+    justify-content: center;
+    align-items: center;
+
+    font-family: Lemonmilk;
+    font-size: 70%; 
+
+}
+
+.hour {
+    display: grid;
+
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+
+    justify-items: center;
+    align-items: center;
+
+    background-color: white;
+    border-radius: 10px;
+
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 90%;
+    font-weight: bold;
+}
+
+.hour:hover {
+    filter: brightness(90%);
+}
+
+.icon {
+    height: 90px;
+    width: 90px;
+}
+
+.time {
+    grid-column: 1 / span 2;
+}
+
+.neg-temp {
+    color: darkblue;
+}
+
+.pos-temp {
+    color: darkred;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .day {
+
+        display: grid;
+
+        grid-template-rows: 11% 11% 11% 11% 11% 11% 11% 11% 11%;
+    }
+
+    .hour {
+        font-size: 50%;
+    }
+
+    .time {
+        grid-row: 1/ span 2;
+    }
+
+    .icon {
+        height: 40px;
+        width: 40px;
+    }
+
+    .left-side {
+        font-size: 30%;
+        margin-top: 50%;
+    }
+    
 }

@@ -1,5 +1,4 @@
 
-doctype html
 html(lang="en")
 
     head
@@ -12,16 +11,36 @@ html(lang="en")
         title Weather
 
     body 
+        
+        header 
 
-        for day, date in days
+            h1= location
+            
+        main
 
-            div(class="day")
-                
-                h2= date
+            for day, date in days
 
-                for hour in day
+                div(class="day")
 
-                    div(class="weather")
-                        h2= hour.time
-                        h2= hour.temp
+                    div(class="left-side")
+                        
+                        h1(class="weekday")= day.weekday
+                        h2(class="date")= date.slice(start=4, end=10)
+
+                    for hour in day.hours
+
+                        div(class="hour")
+
+                            h3(class="time")= hour.time
+
+                            if parseInt(hour.temp) < 0
+                                h3(class="neg-temp")= hour.temp
+                        
+                            else 
+                                h3(class="pos-temp")= hour.temp
+
+                            img(class="icon" src= hour.weather alt=hour.weather)
+    
+    script(src="script.js") 
+
 

@@ -19,20 +19,44 @@ function splitIntoDays(hours, days){
 
         if (hour.date in days) {
 
-            days[hour.date].push(hour)
-           
+            days[hour.date].hours.push(hour)
         }
 
         else {
-            days[hour.date] = [hour]
 
+            const day = {weekday: convertToWeekday(hour.date), hours: [hour]}
+            
+            days[hour.date] = day;
         }
 
         delete hour.date
     })
-
 }
 
+
+function convertToWeekday(date) {
+
+    const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+    const day = new Date(date);
+
+    return weekday[day.getDay()]
+}
+
+function convertToWeatherIcon(weather) {
+
+    return `icons/${weather}.png`
+}
+
+function getLocationName(weather) {
+    
+    const cityName = weather.city.name;
+    const countryName = new Intl.DisplayNames(['en'], {type: "region"}).of(weather.city.country);
+
+    const location = cityName + ", " + countryName;
+
+    return location
+}
 
 request(url, function(err, _res, body){
 
@@ -48,14 +72,13 @@ request(url, function(err, _res, body){
         for (i = 0; i < weather.list.length; i++) {
 
             let hour = {
-                date: weather.list[i].dt_txt.split(" ")[0],
+                "date": new Date(weather.list[i].dt_txt.split(" ")[0]).toDateString(),
 
+                "time": weather.list[i].dt_txt.split(" ")[1],
 
-                // you're gay
+                "temp": (Math.round(weather.list[i].main.temp - 273.15)).toString() + "C°",
 
-
-                time: weather.list[i].dt_txt.split(" ")[1],
-                temp: (Math.round(weather.list[i].main.temp - 273.15)).toString() + "C°"
+                "weather": convertToWeatherIcon(weather.list[i].weather[0].main),
             }
 
             hours.push(hour);
@@ -63,8 +86,11 @@ request(url, function(err, _res, body){
 
         splitIntoDays(hours, days);
 
+       
+
         app.get("/", function(_req, res){
-            res.render("index", {"days" : days});
+
+            res.render("index", {"days" : days, "current_time": new Date().toLocaleTimeString(), "location": getLocationName(weather),});
         })
     }
 })
