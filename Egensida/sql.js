@@ -44,27 +44,32 @@ function dropDookieTable() {
     })
 }
 
-function selectDookieWith(attribute, condition, singular = false) {
 
-    db.serialize(function() {
+function selectDookieWith(attribute, condition, singular = true) {
 
-        db.all(`SELECT * FROM dookie WHERE ${attribute} = "${condition}"`, function(err, rows) {
-            
-            if (err) {
+    return new Promise(function(resolve, reject) {
 
-                console.log(err)
-            }
-            
-            else if (singular) {
-                
-                console.log(rows[0])
-                return rows[0]
+        return db.all(`SELECT * FROM dookie WHERE ${attribute} = "${condition}"`, function(err, rows) {
+
+            if (singular) {
+                return resolve(rows[0])
             }
 
             else {
-                console.log(rows)
-                return rows
+                return resolve(rows)
             }
+        })
+    })
+}
+
+function getDookieDexSize() {
+
+    return new Promise(function(resolve, reject) {
+
+        return db.all(`SELECT COUNT(*) FROM dookie`, function(err, rows) {
+
+            return resolve(rows[0]["COUNT(*)"])
+
         })
     })
 }
@@ -99,4 +104,4 @@ function insertDookie(name, primary_type, secondary_type, primary_ability, secon
 }
 
 
-module.exports = {createDookieTable, selectDookieWith, dropDookieTable, insertDookie, deleteDookieWith}
+module.exports = {createDookieTable, selectDookieWith, dropDookieTable, insertDookie, deleteDookieWith, getDookieDexSize}

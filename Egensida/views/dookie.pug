@@ -1,1 +1,37 @@
 
+doctype html
+html(lang="en")
+
+    head
+
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+        link(rel="stylesheet", href="/main.css")
+        link(rel="stylesheet", href="/dookie.css")
+
+        title Document
+    
+    body 
+
+        header
+
+            h1 DOOKIEDEX
+
+        main
+
+            div(class="left-side")
+
+                h1=pokemon.name
+
+                div(class="sprite-circle")
+
+                div(class="type-flex", style="display: flex; justify-content: center")
+
+                    div(class="type")
+                
+                        h3=pokemon.primary_type
+
+
+            div(class="right-side")
+

@@ -1,0 +1,37 @@
+
+doctype html
+html(lang="en")
+
+    head
+
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+        link(rel="stylesheet", href="style.css")
+        script(src="flashcard.js" defer) 
+
+        title Flashcards
+
+    body 
+
+        header
+
+            h1 INQUIZARY
+        
+        nav 
+            button(id="backButton" class="default-button" onclick= 'window.location.href = "http://localhost:4000/"') BACK
+
+
+        main(class="row")
+
+            button(onclick="changeCard(false)") &lt;
+            
+            div(id="cardDiv" class="column")
+
+                each card in cards 
+
+                    button(id="card" class="flashcard hidden" onclick=`flipCard(this, '${card.front}', '${card.back}')`)
+                    
+                        h1= card.front
+
+            button(onclick="changeCard(true)") &gt;

@@ -1,0 +1,31 @@
+
+doctype html
+html(lang="en")
+
+    head
+
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+        link(rel="stylesheet", href="style.css")
+        script(src="script.js" defer) 
+
+        title Inquizary
+
+    body 
+
+        header
+
+            h1 INQUIZARY
+
+        main
+
+            button(class="default-button" onclick="window.location.href += 'collections'") View collections 
+            
+            button(class="default-button" onclick="window.location.href += 'add'") Add new collection 
+
+            button(class="default-button" onclick="resetDatabase()") Reset
+
+            
+
+

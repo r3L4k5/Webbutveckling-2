@@ -1,0 +1,29 @@
+
+doctype html
+html(lang="en")
+
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+        link(rel="stylesheet", href="style.css")
+
+        title Inquizary
+
+    body
+
+        header
+
+            h1 INQUIZARY
+
+        nav     
+
+            button(id="backButton" class="default-button" onclick= 'window.location.href = "http://localhost:4000/"') Back
+
+        main
+
+            div(class="row")
+
+                each collection in collections 
+
+                    button(onclick=`window.location.href += '${collection.id}'`)= collection.name 

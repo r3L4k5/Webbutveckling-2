@@ -1,0 +1,38 @@
+
+doctype html
+html(lang="en")
+
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+        link(rel="stylesheet", href="style.css")
+        script(src="add.js", defer)
+
+        title Flascards
+
+    body 
+
+        header
+
+            h1 INQUIZARY
+        
+        nav     
+
+            button(id="backButton" class="default-button" onclick= 'window.location.href = "http://localhost:4000/"') Back
+
+        main 
+
+            div(class="column")
+
+                div(class="column")
+
+                    input(type="text"  id="collectionName" class="default-input" placeholder="Collection name" value="lol")
+                    input(type="text" id="collectionAuthor" class="default-input" placeholder="Collection author" value="wtf")
+
+                div(class="row")
+
+                    input(type="text" id="cardFront" class="default-input" placeholder="front" value="wow")
+                    input(type="text" id="cardBack" class="default-input" placeholder="back" value="xd")
+
+            button(id="submitButton" class="default-button") Submit
